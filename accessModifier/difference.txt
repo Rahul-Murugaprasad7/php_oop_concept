@@ -1,0 +1,35 @@
+Private : restricts access to only within the defining class.
+
+class MyClass {
+    private $myPrivateProperty;
+
+    private function myPrivateMethod() {
+        // code
+    }
+}
+
+
+Public : allows access from anywhere, including external scripts and other classes.
+
+class MyClass {
+    public $myPublicProperty;
+
+    public function myPublicMethod() {
+        // code
+    }
+}
+
+
+Protected : allows access within the defining class and any subclasses.
+
+class MyBaseClass {
+    protected $myProtectedProperty;
+
+    protected function myProtectedMethod() {
+        // code
+    }
+}
+
+class MyDerivedClass extends MyBaseClass {
+    // Can access $myProtectedProperty and myProtectedMethod here
+}

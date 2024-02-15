@@ -1,0 +1,26 @@
+1. Data in URL:
+
+The data sent using the GET method is appended to the URL as query parameters. This makes it visible in the address bar of the browser.
+Example: http://example.com/page.php?name=John&age=25
+
+2. Bookmarkable URLs:
+
+Since the data is in the URL, URLs generated using the GET method are often bookmarkable. Users can save and share these URLs.
+
+3. Caching:
+
+GET requests can be cached by browsers, proxies, and other intermediate devices. Subsequent requests with the same URL may retrieve the cached response, improving performance.
+
+4. Idempotent Operations:
+
+GET requests are considered idempotent, meaning that multiple identical requests should have the same effect as a single request. They retrieve information without causing any side effects.
+
+5. Simple Form Data:
+
+GET is commonly used for simple form submissions where the amount of data is small and doesn't involve sensitive information.
+However, it's important to note that using GET for certain operations may have security implications:
+
+6. Security Concerns:
+
+Since data is appended to the URL, it becomes visible and can be logged by web servers, browser history, and potentially exposed in other ways.
+Use caution when dealing with sensitive data or when performing operations that modify server state, as it may be exposed in various logs.

@@ -1,0 +1,50 @@
+In the context of web development, 
+the insertRecord method you provided is likely intended to handle the insertion of new records into a database table, 
+specifically the "employee" table. The method expects the data to be provided through the $_POST superglobal, 
+which is commonly used to retrieve form data submitted through an HTTP POST request.
+
+Here's a breakdown of why $_POST is used in this method:
+
+1. Form Data Submission:
+
+The method is designed to handle form submissions where data is sent to the server using the HTTP POST method.
+
+2. $_POST Superglobal:
+
+$_POST is an associative array in PHP that holds data sent to the server using the POST method. It is often used to retrieve form data.
+In the provided code, $post is a parameter representing data sent through the POST request.
+
+3. Form Fields:
+
+The method expects form fields named 'emp_name', 'occupation', and 'salary' to be present in the submitted data.
+
+4. Data Extraction:
+
+The values for 'emp_name', 'occupation', and 'salary' are extracted from the $post array.
+
+Example:
+
+php
+Copy code
+$name = $post['emp_name'];
+$occupation = $post['occupation'];
+$salary = $post['salary'];
+
+5. SQL Query:
+
+The extracted data is then used to construct an SQL INSERT query, inserting a new record into the "employee" table.
+
+6. Error Handling:
+
+The $result variable is used to check the success of the query execution.
+If the query is successful ($result is truthy), the user is redirected to 'index.php' with a success message.
+If there's an error, an error message is echoed, including the SQL query and details of the database connection error.
+
+7. Header Redirect:
+
+After successfully inserting a record, a header('location:index.php?msg=ins'); 
+statement is used to redirect the user to 'index.php' with a query parameter indicating a successful insertion (msg=ins).
+
+In summary, the insertRecord method is structured to handle form submissions containing employee data, 
+typically submitted through an HTML form with the HTTP POST method. 
+The use of $_POST allows the method to access the form data and process it for insertion into the database.

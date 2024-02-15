@@ -1,16 +1,16 @@
 <?php
-include 'model.php';
+include 'model.php';            //we connect model.php with this file
 
-$obj = new Model();
+$obj = new Model();             //assigning the model class with $obj
 
 // insert record
 if(isset($_POST['submit'])){
-    $obj->insertRecord($_POST);
+    $obj->insertRecord($_POST);         //this if condition chekes whether the user clicked on the sumbit button
 }
 
 // update record
-if(isset($_POST['update'])){
-    $obj->updateRecord($_POST);
+if(isset($_POST['update'])){             //it calls the updateRecord method of the Model class with the form data ($_POST).
+    $obj->updateRecord($_POST);         //this if condition chekes whether the user clicked on the update button
 }
 
 //delete record
@@ -37,11 +37,11 @@ if(isset($_GET['deleteid'])){
 <body>
     <h2 class="text-center text-info">CRUD Operation in PHP Using OOP</h2><br>
     <div class="container">
-<!-- /** for Success message */ -->
+<!--  for Success message  -->
     <?php
         if(isset($_GET['msg']) AND $_GET['msg']=='ins'){
             echo '<div class="alert alert-primary" role="alert">
-            Record Inserted Successfully!!!              </div>';
+            Record Inserted Successfully!!!              </div>';           //bootstrap for the pop-up thr success message
         }
         if(isset($_GET['msg']) AND $_GET['msg']=='upd'){
             echo '<div class="alert alert-primary" role="alert">
@@ -54,9 +54,9 @@ if(isset($_GET['deleteid'])){
     ?>
     <?php
 //edit record
-        if(isset($_GET['editid'])){
-            $editid = $_GET['editid'];
-            $myrecord = $obj->displayRecordById($editid);
+        if(isset($_GET['editid'])){                                     //This checks if the URL parameter named 'editid' is set. It returns true if 'editid' is present in the URL, otherwise, it returns false.
+            $editid = $_GET['editid'];                                  //If 'editid' is set, this line retrieves the value of 'editid' from the URL and assigns it to the variable $editid.
+            $myrecord = $obj->displayRecordById($editid);               //edit record will be updated in the db
     ?>    
 <!-- to update the form -->
         <form action="index.php" method="post">
@@ -80,7 +80,7 @@ if(isset($_GET['deleteid'])){
     <?php    
         }else{
     ?>
-
+<!-- basic form -->
         <form action="index.php" method="post">
             <div class="form-group">
                 <label>Name</label>
@@ -113,11 +113,11 @@ if(isset($_GET['deleteid'])){
                 <th>Salary</th>
                 <th>Action</th>
             </tr>
-            <?php
-                $data = $obj->displayRecord();
-                $sno = 1;
-                foreach ($data as $value){
-            ?>
+        <?php
+            $data = $obj->displayRecord();              //fetches records from a data source using the displayRecord method of the $obj object.
+            $sno = 1;
+            foreach ($data as $value){
+        ?>
             <tr class="text-center">
                 <td><?php echo $sno++; ?></td>
                 <td><?php echo $value['emp_name']?></td>
