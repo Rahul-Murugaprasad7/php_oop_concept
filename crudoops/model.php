@@ -26,7 +26,7 @@
             $sql = "INSERT INTO employee(emp_name,occupation,salary)VALUES('$name','$occupation',$salary)";
             $result = $this->conn->query($sql);     //This -> is the object operator, used to access properties and methods of an object
             if($result){
-                header('location:index.php?msg=ins');
+                header('location:crud.php?msg=ins');
 
             }else{
                 echo "Error".$sql."<br>".$this->conn->error;
@@ -42,7 +42,7 @@
             $sql = "UPDATE employee SET emp_name = '$name', occupation = '$occupation', salary = '$salary' WHERE id = '$editid' ";
             $result = $this->conn->query($sql);             //connects to sql db
             if($result){
-                header('location:index.php?msg=upd');
+                header('location:crud.php?msg=upd');
 
             }else{
                 echo "Error".$sql."<br>".$this->conn->error;
@@ -54,12 +54,12 @@
             $sql = "DELETE FROM employee WHERE id = '$delid'";
             $result = $this->conn->query($sql);
             if($result){
-                header('location:index.php?msg=del');
+                header('location:crud.php?msg=del');
             }else{
                 echo "Error".$sql."<br>".$this->conn->error;
             }
         }
-
+        
 // fucntion to display record
         public function displayRecord(){
             $sql = "SELECT * FROM employee";
